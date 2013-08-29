@@ -11,3 +11,21 @@
 *.lai
 *.la
 *.a
+
+# Visual Studio files
+*.sln
+*.sdf
+*.opensdf
+*.suo
+*.obj
+*.exe
+*.pdb
+*.map
+*.idb
+*.ilk
+*.tlog
+Debug/
+Release/
+
+# Dependency libraries
+petulant-archer/petulant-archer/libs
