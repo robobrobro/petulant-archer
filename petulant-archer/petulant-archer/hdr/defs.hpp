@@ -37,6 +37,7 @@ namespace petarc
 		{
 			enum state_e
 			{
+				null,
 				title_screen,
 				playing,
 				paused,

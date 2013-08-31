@@ -14,8 +14,13 @@ namespace petarc
 		public:
 			title_screen(defs::gfx::engine_ptr gfx_engine);
 
+			void enter();
+			void leave();
+
 		protected:
 			void init();
+
+			defs::gfx::entity_ptr title_;
 		};	// class title_screen
 	}	// namespace gfx
 }	// namespace petarc

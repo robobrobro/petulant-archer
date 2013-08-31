@@ -9,7 +9,7 @@ namespace petarc
 {
 	game::game()
 		: window_(defs::window_ptr(new sf::RenderWindow()))
-		, state_id_(defs::states::title_screen)
+		, state_id_(defs::states::null)
 	{
 		window_->create(sf::VideoMode::getFullscreenModes().front(), "petulant-archer", sf::Style::Fullscreen);
 		
@@ -43,6 +43,13 @@ namespace petarc
 						window_->close();
 					}
 				}
+			}
+
+			// process initial state transition
+			if (state_id_ == defs::states::null)
+			{
+				state_id_ = defs::states::title_screen;
+				states_[state_id_]->enter();
 			}
 
 			if (states_.count(state_id_))

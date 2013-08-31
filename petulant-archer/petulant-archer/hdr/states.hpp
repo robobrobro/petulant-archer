@@ -12,6 +12,9 @@ namespace petarc
 		public:
 			state(defs::gfx::engine_ptr gfx_engine);
 
+			virtual void enter() = 0;
+			virtual void leave() = 0;
+
 			virtual void draw();
 			virtual void update();
 
