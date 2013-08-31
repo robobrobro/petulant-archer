@@ -14,8 +14,8 @@ namespace petarc
 
 	protected:
 		defs::window_ptr window_;
-		defs::gfx::engine_ptr gfx_engine_;
-
+		defs::states::state_map states_;
+		defs::states::state_id state_id_;
 	};	// class game
 }	// namespace petarc
 

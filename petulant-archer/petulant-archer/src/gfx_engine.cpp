@@ -29,6 +29,33 @@ namespace petarc
 			}
 		}
 
+		void engine::add_texture(const std::string & name, defs::gfx::texture_ptr texture)
+		{
+			if (textures_.count(name) == 0)
+			{
+				textures_[name] = texture;
+			}
+		}
+
+		defs::gfx::texture_ptr engine::get_texture(const std::string & name) const
+		{
+			defs::gfx::texture_ptr texture;
+			if (textures_.count(name))
+			{
+				texture = textures_.at(name);
+			}
+
+			return texture;
+		}	
+
+		void engine::remove_texture(const std::string & name)
+		{
+			if (textures_.count(name))
+			{
+				textures_.erase(name);
+			}
+		}
+
 		void engine::draw()
 		{
 			for (std::size_t idx = 0; idx < entities_.size(); ++idx)

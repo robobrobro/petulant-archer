@@ -15,12 +15,17 @@ namespace petarc
 			void add_entity(defs::gfx::entity_ptr entity);
 			void remove_entity(defs::gfx::entity_ptr entity);
 
+			void add_texture(const std::string & name, defs::gfx::texture_ptr texture);
+			defs::gfx::texture_ptr get_texture(const std::string & name) const;
+			void remove_texture(const std::string & name);
+
 			void draw();
 			void update();
 
 		protected:
 			defs::window_ptr window_;
-			std::vector<defs::gfx::entity_ptr> entities_; // TODO change to map <int, entity> where int is unique entity identifier
+			std::vector<defs::gfx::entity_ptr> entities_; 
+			defs::gfx::texture_map textures_;
 		};	// class engine
 	}	// namespace gfx
 }	// namespace petarc

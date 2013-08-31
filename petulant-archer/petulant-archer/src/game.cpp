@@ -1,21 +1,28 @@
 #include "game.hpp"
 
 #include "gfx_engine.hpp"
-
 #include "gfx_entity.hpp"
+#include "states.hpp"
+#include "states_title_screen.hpp"
 
 namespace petarc
 {
 	game::game()
 		: window_(defs::window_ptr(new sf::RenderWindow()))
-		, gfx_engine_(defs::gfx::engine_ptr(new gfx::engine(window_)))
+		, state_id_(defs::states::title_screen)
 	{
 		window_->create(sf::VideoMode::getFullscreenModes().front(), "petulant-archer", sf::Style::Fullscreen);
+		
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		// create title screen
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		
+		// create state and gfx engine
+		defs::gfx::engine_ptr title_gfx_engine = defs::gfx::engine_ptr(new gfx::engine(window_));
+		defs::states::title_screen_ptr title_screen = defs::states::title_screen_ptr(new states::title_screen(title_gfx_engine));
 
-		// TODO testing...
-		defs::gfx::entity_ptr entity = defs::gfx::entity_ptr(new gfx::entity("res/cube.png", sf::Vector2f(36, 36)));
-		entity->set_position(sf::Vector2f(sf::VideoMode::getDesktopMode().width / 2.0f, sf::VideoMode::getDesktopMode().height / 2.0f));
-		gfx_engine_->add_entity(entity);
+		// add state to states map
+		states_[defs::states::title_screen] = title_screen;
 	}
 
 	void game::run()
@@ -38,10 +45,16 @@ namespace petarc
 				}
 			}
 
-			gfx_engine_->update();
+			if (states_.count(state_id_))
+			{
+				states_[state_id_]->update();
+			}
 
 			window_->clear(sf::Color::Black);
-			gfx_engine_->draw();
+			if (states_.count(state_id_))
+			{
+				states_[state_id_]->draw();
+			}
 			window_->display();
 		}
 	}
