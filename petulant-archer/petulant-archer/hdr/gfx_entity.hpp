@@ -50,6 +50,12 @@ namespace petarc
 
 			inline void add_frame(sf::IntRect frame) { frames_.push_back(frame); }
 			inline void set_frame_duration(const boost::posix_time::time_duration & duration) { frame_duration_ = duration; }
+			
+			// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			// text
+			// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			inline defs::gfx::text_ptr get_text() const { return text_; }
+			inline void set_text(defs::gfx::text_ptr text) { text_ = text; }
 
 		protected:
 			virtual void init();
@@ -73,6 +79,11 @@ namespace petarc
 			boost::posix_time::time_duration frame_duration_;
 			boost::posix_time::ptime frame_pause_time_;
 			boost::posix_time::ptime frame_start_time_;
+			
+			// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			// text
+			// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			defs::gfx::text_ptr text_;
 		};	// class entity
 	}	// namespace gfx
 }	// namespace petarc

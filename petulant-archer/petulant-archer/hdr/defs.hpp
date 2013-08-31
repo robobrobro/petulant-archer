@@ -29,6 +29,10 @@ namespace petarc
 			typedef boost::shared_ptr<petarc::gfx::engine> engine_ptr;
 			typedef boost::shared_ptr<petarc::gfx::entity> entity_ptr;
 
+			typedef boost::shared_ptr<sf::Text> text_ptr;
+			typedef boost::shared_ptr<sf::Font> font_ptr;
+			typedef std::map<std::string, defs::gfx::font_ptr> font_map;
+
 			typedef boost::shared_ptr<sf::Texture> texture_ptr;
 			typedef std::map<std::string, defs::gfx::texture_ptr> texture_map;
 		}	// namespace gfx

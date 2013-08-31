@@ -56,11 +56,46 @@ namespace petarc
 			}
 		}
 
+		void engine::add_font(const std::string & name, defs::gfx::font_ptr font)
+		{
+			if (fonts_.count(name) == 0)
+			{
+				fonts_[name] = font;
+			}
+		}
+
+		defs::gfx::font_ptr engine::get_font(const std::string & name) const
+		{
+			defs::gfx::font_ptr font;
+			if (fonts_.count(name))
+			{
+				font = fonts_.at(name);
+			}
+
+			return font;
+		}	
+
+		void engine::remove_font(const std::string & name)
+		{
+			if (fonts_.count(name))
+			{
+				fonts_.erase(name);
+			}
+		}
+
 		void engine::draw()
 		{
 			for (std::size_t idx = 0; idx < entities_.size(); ++idx)
 			{
-				window_->draw(*entities_[idx]);
+				defs::gfx::text_ptr text = entities_[idx]->get_text();
+				if (!text)
+				{
+					window_->draw(*entities_[idx]);
+				}
+				else
+				{
+					window_->draw(*text);
+				}
 			}
 		}
 

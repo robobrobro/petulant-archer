@@ -19,13 +19,18 @@ namespace petarc
 			defs::gfx::texture_ptr get_texture(const std::string & name) const;
 			void remove_texture(const std::string & name);
 
+			void add_font(const std::string & name, defs::gfx::font_ptr font);
+			defs::gfx::font_ptr get_font(const std::string & name) const;
+			void remove_font(const std::string & name);
+
 			void draw();
 			void update();
 
 		protected:
 			defs::window_ptr window_;
 			std::vector<defs::gfx::entity_ptr> entities_; 
-			defs::gfx::texture_map textures_;
+			defs::gfx::texture_map textures_; 
+			defs::gfx::font_map fonts_;
 		};	// class engine
 	}	// namespace gfx
 }	// namespace petarc
